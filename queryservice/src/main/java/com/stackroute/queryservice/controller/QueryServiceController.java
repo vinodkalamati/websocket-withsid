@@ -40,6 +40,7 @@ public class QueryServiceController {
     @ApiOperation(value = "Perform NLP on User Query")
     @PostMapping("query")
     public ResponseEntity<?> processQuery(@RequestBody QueryInput queryInput) throws JsonProcessingException {
+        System.out.println("sessionId*****************"+queryInput.getSessionId());
 	    System.out.println("queryServiceCaslled");
 	    //checks query for domain
         if (queryInput.getDomain().equalsIgnoreCase("movie")) {
@@ -79,7 +80,7 @@ public class QueryServiceController {
                     NotificationOutput output1 = new NotificationOutput();
                     output1.setStatus("notFound");
                     output1.setQuery(output.getStrForDict());
-                    output.setSessionId(queryInput.getSessionId());
+                    output1.setSessionId(queryInput.getSessionId());
                     NotFoundResponse response = new NotFoundResponse();
                     response.setDomain("movie");
                     response.setQuery(queryInput.getSearchTerm());
@@ -131,6 +132,7 @@ public class QueryServiceController {
                     output1.setStatus("notFound");
                     output1.setQuery(output.getStrForDict());
                     output1.setSessionId(queryInput.getSessionId());
+                    System.out.println(queryInput.getSessionId());
                     NotFoundResponse response = new NotFoundResponse();
                     response.setDomain("medical");
                     response.setQuery(queryInput.getSearchTerm());

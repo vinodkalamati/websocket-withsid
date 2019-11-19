@@ -169,14 +169,12 @@ public class ResultFetcherServiceImpl implements ResultFetcherService {
     public void domainDataToFrontEndService(String param) {        //method to display domain data to frontend
         Map data;
         List<Map> dataList = new ArrayList<>();
-        Gson gson = new Gson();
-        ProcessedQueryModel QueryModel=gson.fromJson(param,ProcessedQueryModel.class);
-        Map temp=new HashMap();
-        temp.put("sessionId",QueryModel.getSessionId());
-        dataList.add(temp);
         org.json.JSONArray dataToFrontEnd = new org.json.JSONArray();
         List result = resultFetcher(param);
         ProcessedQueryModel processedQueryModel = (ProcessedQueryModel) result.get(2);
+        Map temp=new HashMap();
+        temp.put("sessionId",processedQueryModel.getSessionId());
+        dataList.add(temp);
         List tempKeys = new ArrayList<>();
         for (Map m : processedQueryModel.getConstraints()
         ) {
@@ -225,13 +223,13 @@ public class ResultFetcherServiceImpl implements ResultFetcherService {
 
     public void resultToFrontEndService(String param) throws IOException, ParseException {                     //method to display result and suggestions to frontend
         String[] finalResult;                                //stores the array of results
-        String[] finalSuggestions;                           //stores the array of suggestions
-        Gson gson = new Gson();
-        ProcessedQueryModel QueryModel=gson.fromJson(param,ProcessedQueryModel.class);
+        String[] finalSuggestions;                      //stores the array of suggestions
+        Gson gson=new Gson();
         List resultObject = resultFetcher(param);
         List<Map> actualResult = (ArrayList) resultObject.get(1);
         List<String> resultList = new ArrayList();
         ProcessedQueryModel processedQueryModel = (ProcessedQueryModel) resultObject.get(2);
+        System.out.println(processedQueryModel.getSessionId());
         for (Map m : actualResult                             //for results
         ) {
             if (!((ArrayList) m.get("value")).isEmpty() || !m.get("value").equals(null)) {
@@ -299,7 +297,7 @@ public class ResultFetcherServiceImpl implements ResultFetcherService {
             resultModel.setSuggestions(finalSuggestions);
             resultModel.setQuery(processedQueryModel.getQuery());
             resultModel.setStatus("noresult");
-            resultModel.setSessionId(QueryModel.getSessionId());
+            resultModel.setSessionId(processedQueryModel.getSessionId());
 
 
         } else {
@@ -320,7 +318,7 @@ public class ResultFetcherServiceImpl implements ResultFetcherService {
             resultModel.setSuggestions(finalSuggestions);
             resultModel.setQuery(processedQueryModel.getQuery());
             resultModel.setStatus("result");
-            resultModel.setSessionId(QueryModel.getSessionId());
+            resultModel.setSessionId(processedQueryModel.getSessionId());
         }
 
         String json = gson.toJson(resultModel);

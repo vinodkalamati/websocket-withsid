@@ -4,6 +4,7 @@ import {MedicalSearchService} from '../medical_search_service/medical-search.ser
 import { Router } from '@angular/router';
 import {WebSocketService} from '../websocket-service/websocket.service';
 import Speech from 'speak-tts' ;
+import { analytics } from 'src/analytics';
 
 
 @Component({
@@ -21,22 +22,32 @@ export class MedicalDomainSearchComponent implements OnInit {
     notifications:any;
     results:String;
     name: string;
+    sessionId:any;
    // tslint:disable-next-line: max-line-length
    constructor(private speechService: SpeechService,private webSocketService: WebSocketService,  private medicalSearchService: MedicalSearchService, private route:Router ) {
      this.startListenButton = true;
      this.stopListeningButton = false;
      this.speechData = '';
+     
    }
    formValue: String;
    ngOnInit() {
+     localStorage.clear();
+
+    this.sessionId=new Date().valueOf();
+    localStorage.setItem("sessionId",this.sessionId);
+    let sessionId=localStorage.getItem("sessionId");
+    console.log(sessionId+"^^^^^^^^^^");
+    console.log(this.sessionId);
+
     const speech = new Speech() // will throw an exception if not browser supported
     if(speech.hasBrowserSupport()) { // returns a boolean
         console.log("speech synthesis supported")
     }
-     localStorage.clear();
+
      let stompClient =this.webSocketService.connect();
                                stompClient.connect({},frame =>{
-                                 stompClient.subscribe('/topic/notification',notifications=>{
+                                 stompClient.subscribe('/topic/notification/'+sessionId,notifications=>{
                                    this.notifications=JSON.parse(notifications.body);
                                    localStorage.setItem('query',this.notifications.query);
                                    localStorage.setItem('status',this.notifications.status);
