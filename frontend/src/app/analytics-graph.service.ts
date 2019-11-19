@@ -8,7 +8,7 @@ import { catchError } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class AnalyticsGraphService {
-  private _url: string = "http://13.127.108.14:8099/api/v1/analytics";
+  private _url: string = "http://34.93.245.170:8099/api/v1/analytics";
   constructor(private http: HttpClient) { }
   getResponses(): Observable<analyticsgraph> {
     return this.http.get<analyticsgraph>(this._url).pipe(

@@ -6,7 +6,7 @@ import { MedicalDomainSearchComponent } from './medical-domain-search/medical-do
 import { Router } from '@angular/router';
 
 export class WebSocketAPI {
-    webSocketEndPoint: string = 'http://13.127.108.14:8015/socket';
+    webSocketEndPoint: string = 'http://34.93.245.170:8015/socket';
     topic: string = "/topic/notification";
     stompClient: any;
     appComponent: MedicalDomainSearchComponent;

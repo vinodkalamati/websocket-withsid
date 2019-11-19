@@ -16,8 +16,8 @@ const httpOptions = {
   providedIn: 'root'
 })
 export class AnalyticsService {
-  private _url: string = "http://13.127.108.14:8099/api/v1/display";
-  private _url2: string = "https://knowably.stackroute.io:8080/queryservice/api/v1/response";
+  private _url: string = "http://34.93.245.170:8099/api/v1/display";
+  private _url2: string = "http://34.93.245.170:8080/queryservice/api/v1/response";
   constructor(private http: HttpClient) { }
   changeURL(url: string) {
     this._url = url;
@@ -30,10 +30,10 @@ export class AnalyticsService {
     )
   }
   postQuery(query:searchQuery) {
-    return this.http.post("http://13.127.108.14:8087//api/v1/analyticsquery",query,httpOptions);
+    return this.http.post("http://34.93.245.170:8087//api/v1/analyticsquery",query,httpOptions);
   }
   postConcept(concept:expertDTO) {
-    return this.http.post("http://13.127.108.14:8080/google-search/api/v1/domain",concept,httpOptions);
+    return this.http.post("http://34.93.245.170:8080/google-search/api/v1/domain",concept,httpOptions);
   }
   getQueries(): Observable<responses[]> {
     return this.http.get<responses[]>(this._url2).pipe(

@@ -17,7 +17,7 @@ export class ExpertLoginService {
     console.log(expert);
     this.userId = expert.name;
     localStorage.setItem('user', this.userId);
-    let url = "https://knowably.stackroute.io:8080/user-service/api/v1/authenticate";
+    let url = "http://34.93.245.170:8080/user-service/api/v1/authenticate";
     return this.http.post(url, expert, httpOptions);
   }
 

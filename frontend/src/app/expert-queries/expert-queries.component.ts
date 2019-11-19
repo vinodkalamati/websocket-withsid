@@ -18,7 +18,7 @@ export class ExpertQueriesComponent implements OnInit {
 
   ngOnInit() {
     this.userId = localStorage.getItem('user');
-    this._analytics.changeURL("https://knowably.stackroute.io:8080/queryservice/api/v1/response");
+    this._analytics.changeURL("http://34.93.245.170:8080/queryservice/api/v1/response");
     this._analytics.getQueries()
         .subscribe(data => this.responses=data,
                    error => this.errorMsg = error);

@@ -21,14 +21,14 @@ export class WebSocketService {
 
   private messageSubject = new Subject<any>();
 
-  constructor() { 
-    let socket = new SockJs(`https://knowably.stackroute.io:8443/socket`);
+  constructor() {
+    let socket = new SockJs(`http://34.93.245.170:8443/socket`);
 
     let stompClient = Stomp.over(socket);
   }
     private result:string;
     connect() {
-        let socket = new SockJs(`https://knowably.stackroute.io:8443/socket`);
+        let socket = new SockJs(`http://34.93.245.170:8443/socket`);
 
         let stompClient = Stomp.over(socket);
 

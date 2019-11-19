@@ -13,12 +13,12 @@ export class MedicalSearchService {
   sessionId:any
   constructor(private http: HttpClient) { }
    userSearchService(search: searchQuery) {
-    console.log('service ' + search.searchTerm);  
+    console.log('service ' + search.searchTerm);
     this.sessionId=new Date().valueOf();
     console.log(this.sessionId +"sessionId");
 
     search.domain = 'medical';
-      return this.http.post('https://knowably.stackroute.io:8080/queryservice/api/v1/query', search, httpOptions)
+      return this.http.post('http://34.93.245.170:8080/queryservice/api/v1/query', search, httpOptions)
     }
     private _searchQuery: searchQuery;
     suggestionSearchService(searchTerm) {
@@ -29,6 +29,6 @@ export class MedicalSearchService {
         sessionId:this.sessionId+""
       };
       console.log('service ' + this._searchQuery.domain + this._searchQuery.searchTerm +this._searchQuery.sessionId);
-        return this.http.post('https://knowably.stackroute.io:8080/queryservice/api/v1/query', this._searchQuery, httpOptions)
+        return this.http.post('http://34.93.245.170:8080/queryservice/api/v1/query', this._searchQuery, httpOptions)
       }
 }

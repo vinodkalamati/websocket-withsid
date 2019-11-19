@@ -30,7 +30,7 @@ export class ExpertService {
       concept
     };
     console.log("*****this.....",this._expertDTO);
-    let url = "https://knowably.stackroute.io:8080/google-search/api/v1/domain";
+    let url = "http://34.93.245.170:8080/google-search/api/v1/domain";
     return this.http.post<any>(url, this._expertDTO, httpOptions);
     //     let post_url = `http://localhost:8080/user-service/api/v1/user`;
     // return this.http.post(post_url,newUser,httpOptions);

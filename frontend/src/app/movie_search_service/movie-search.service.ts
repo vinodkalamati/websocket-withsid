@@ -20,7 +20,7 @@ export class MovieSearchService {
     console.log("sessionId   "+this.sessionId);
     localStorage.setItem("sessionId",this.sessionId);
 
-    return this.http.post("https://knowably.stackroute.io:8080/queryservice/api/v1/query", search, httpOptions)
+    return this.http.post("http://34.93.245.170:8080/queryservice/api/v1/query", search, httpOptions)
   }
 
   private _searchQuery: searchQuery;
@@ -32,6 +32,6 @@ export class MovieSearchService {
       sessionId:this.sessionId +""
     };
     console.log('service ' + this._searchQuery.domain + this._searchQuery.searchTerm +this._searchQuery.sessionId);
-      return this.http.post('https://knowably.stackroute.io:8080/queryservice/api/v1/query', this._searchQuery, httpOptions)
+      return this.http.post('http://34.93.245.170:8080/queryservice/api/v1/query', this._searchQuery, httpOptions)
     }
 }

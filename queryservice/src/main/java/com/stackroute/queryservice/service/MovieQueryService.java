@@ -138,7 +138,7 @@ public class MovieQueryService {
     }
 
     public JSONObject fetchRedis() throws IOException, org.json.simple.parser.ParseException {
-        String link = "http://13.127.108.14:8134/api";
+        String link = "http://34.93.245.170:8134/api";
 //        String link = "http://104.154.175.62:8134/api";
         URL url = new URL(link);
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();

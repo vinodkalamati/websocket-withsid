@@ -155,7 +155,7 @@ public class MedicineQueryService {
     }
     //Method fetches data from Redis database
     public JSONObject fetchRedis() throws IOException, ParseException {
-        String link = "http://13.127.108.14:8134/api";
+        String link = "http://34.93.245.170:8134/api";
 
         URL url = new URL(link);
         HttpURLConnection connection = (HttpURLConnection)url.openConnection();

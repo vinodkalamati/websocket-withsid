@@ -21,7 +21,7 @@ public class QueryTriggerService {
     @Value("${url}")
     private String url;
     public void queryServiceTrigger(String query,String domain,String sessionId) throws IOException {
-       String url = "http://13.127.108.14:8087/api/v1/query";
+       String url = "http://34.93.245.170:8087/api/v1/query";
        JSONObject object1 = new JSONObject();
        object1.put("domain", domain);
        object1.put("searchTerm", query);

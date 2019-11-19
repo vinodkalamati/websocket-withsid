@@ -18,7 +18,7 @@ export class ExpertAnalyticsComponent implements OnInit {
   constructor(private _analytics: AnalyticsService,private router:Router) { }
 
   ngOnInit() {
-    this._analytics.changeURL("http://13.127.108.14:8099/api/v1/display");
+    this._analytics.changeURL("http://34.93.245.170:8099/api/v1/display");
     this._analytics.getResponses()
         .subscribe(data => this.responses=data,
                    error => this.errorMsg = error);

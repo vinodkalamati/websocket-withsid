@@ -10,9 +10,9 @@ Run ``sudo docker-compose build `` to build docker-compose.yml file
 
 Run ``sudo docker-compose up`` to start all microservices
 
-Open ``http://13.127.108.14:4200`` on browser for the landing page of application.
+Open ``http://34.93.245.170:4200`` on browser for the landing page of application.
 
-Open ``http://13.127.108.14:7474`` on browser for neo4j DB.
+Open ``http://34.93.245.170:7474`` on browser for neo4j DB.
 
 Run ``kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic YourTopicName --from-beginning`` to see the kafka terminal
 
