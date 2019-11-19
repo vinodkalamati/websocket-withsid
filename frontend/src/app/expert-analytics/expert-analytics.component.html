@@ -1,0 +1,45 @@
+<header>
+    <h2 routerLink="/expert-analytics">Response Analytics</h2>
+</header>
+<body class="wrapper">
+    <div id="buttons">
+        <button mat-raised-button color="primary" routerLink="/expert-analytics/movie">View By Movie Domain</button>
+        <button mat-raised-button color="primary" routerLink="/expert-analytics/medical">View By Medical Domain</button>
+        <button mat-raised-button color="primary" routerLink="/expert-analytics/graph">View Graphs</button>
+        <button mat-raised-button color="primary" routerLink="/expert-analytics/query">View Untagged Queries</button>
+        <button mat-raised-button color="primary" (click)="logg()"> Console Log</button>
+    </div>
+    <div class="mat-elevation-z8" id="tble">
+        <table mat-table [dataSource]="responses">
+            <ng-container matColumnDef="domain">
+                <th mat-header-cell *matHeaderCellDef> Domain </th>
+                <td mat-cell *matCellDef="let element"> {{element.key.domain}} </td>
+            </ng-container>
+            <ng-container matColumnDef="query">
+                <th mat-header-cell *matHeaderCellDef> Query </th>
+                <td mat-cell *matCellDef="let element"> {{element.key.query}} </td>
+            </ng-container>
+            <ng-container matColumnDef="result">
+                <th mat-header-cell *matHeaderCellDef> Result </th>
+                <td mat-cell *matCellDef="let element"> {{element.result}} </td>
+            </ng-container>
+            <ng-container matColumnDef="posResponse">
+                <th mat-header-cell *matHeaderCellDef> Positive Responses </th>
+                <td mat-cell *matCellDef="let element"> {{element.key.posResponse}} </td>
+            </ng-container>
+            <ng-container matColumnDef="negResponse">
+                <th mat-header-cell *matHeaderCellDef> Negative Responses </th>
+                <td mat-cell *matCellDef="let element"> {{element.key.negResponse}} </td>
+            </ng-container>
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef> Actions </th>
+                <td mat-cell *matCellDef="let element"> <a mat-raised-button color="primary" (click)="editQuery(element)">Edit</a> </td>
+            </ng-container>
+            
+            <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+</body>
+
+

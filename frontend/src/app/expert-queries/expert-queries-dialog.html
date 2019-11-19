@@ -1,0 +1,15 @@
+<h1 mat-dialog-title> Enter domain and concept </h1>
+<div mat-dialog-content>
+    <form #InputConcept="ngForm" [formGroup]="conceptForm" (ngSubmit)="onClickSubmit(InputConcept.value)">
+        <mat-form-field>
+            <mat-select placeholder="Select Domain" formControlName="domain">
+                <mat-option value="movie">Movie</mat-option>
+                <mat-option value="medical">Medical</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="Input" formControlName="concept">
+        </mat-form-field>
+        <button type="submit" class="button">Submit</button>
+    </form>
+</div>
